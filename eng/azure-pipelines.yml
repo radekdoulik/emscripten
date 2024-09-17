@@ -23,7 +23,10 @@ extends:
   parameters:
     sdl:
       codeql:
+        compiled:
+          enabled: false
         language: javascript
+        runSourceLanguagesInSourceAnalysis: true
       tsa:
         enabled: true
       policheck:

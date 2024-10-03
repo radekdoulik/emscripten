@@ -25,8 +25,9 @@ extends:
       codeql:
         compiled:
           enabled: false
-        language: javascript
         runSourceLanguagesInSourceAnalysis: true
+        sourceLanguages: javascript
+        binaryLanguages: csharp
       tsa:
         enabled: true
       policheck:

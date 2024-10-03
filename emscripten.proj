@@ -31,7 +31,11 @@
       Lines="$(EmscriptenEmsdkVersion)" />
   </Target>
 
-  <Target Name="Build" DependsOnTargets="LayoutEmscripten" />
+  <Target Name="BuildHelloWorld">
+    <MSBuild Projects="eng/hello.csproj" Targets="Build" />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="BuildHelloWorld;LayoutEmscripten" />
   <Target Name="ReallyPack" BeforeTargets="Pack">
     <MSBuild Projects="eng/nuget/packages.builds" Targets="Build" />
   </Target>

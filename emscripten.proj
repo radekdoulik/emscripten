@@ -31,12 +31,10 @@
       Lines="$(EmscriptenEmsdkVersion)" />
   </Target>
 
-  <Target Name="BuildHelloWorld">
-    <MSBuild Projects="eng/hello.csproj" Targets="Build" />
-  </Target>
-
-  <Target Name="Build" DependsOnTargets="BuildHelloWorld;LayoutEmscripten" />
+  <Target Name="Build" DependsOnTargets="LayoutEmscripten" />
   <Target Name="ReallyPack" BeforeTargets="Pack">
+    <MSBuild Projects="eng/hello.csproj" Targets="Restore" Properties="MSBuildRestoreSessionId=$([System.Guid]::NewGuid())" />
+    <MSBuild Projects="eng/hello.csproj" Targets="Build" />
     <MSBuild Projects="eng/nuget/packages.builds" Targets="Build" />
   </Target>
 </Project>
